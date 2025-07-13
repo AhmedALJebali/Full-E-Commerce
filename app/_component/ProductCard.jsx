@@ -1,0 +1,25 @@
+import React from "react";
+import Image from "next/image";
+function ProductCard({ product }) {
+  return (
+    <div key={product.id} className="w-full ">
+      <div className="w-full h-[280px] relative bg-[#F6F6F6] flex justify-center items-center overflow-hidden rounded-md">
+        <Image src={product.image} alt={product.title} fill />
+      </div>
+      <h1 className="text-sm md:text-base text-neutral-900 font-bold mt-3">
+        {product.title}
+      </h1>
+
+      <div className="w-full flex flex-col sm:flex-row sm:items-center gap-2 mt-2">
+        <button className="w-fit text-xs md:text-sm text-neutral-900 bg-neutral-50 border border-neutral-400 px-3 py-1 rounded-xl">
+          {product.status}
+        </button>
+        <span className="text-sm md:text-base text-neutral-600">
+          ${product.price.toFixed(2)}
+        </span>
+      </div>
+    </div>
+  );
+}
+
+export default ProductCard;
