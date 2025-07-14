@@ -1,8 +1,9 @@
 import React from "react";
 import Image from "next/image";
+import Link from "next/link";
 function ProductCard({ product }) {
   return (
-    <div key={product.id} className="w-full ">
+    <Link href={`/Product/${product.id}`} key={product.id} className="w-full ">
       <div className="w-full h-[280px] relative bg-[#F6F6F6] flex justify-center items-center overflow-hidden rounded-md">
         <Image src={product.image} alt={product.title} fill />
       </div>
@@ -18,7 +19,7 @@ function ProductCard({ product }) {
           ${product.price.toFixed(2)}
         </span>
       </div>
-    </div>
+    </Link>
   );
 }
 
