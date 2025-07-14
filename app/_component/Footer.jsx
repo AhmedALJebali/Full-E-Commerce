@@ -1,12 +1,12 @@
 import React from "react";
 
-const Footer = ({ isDark = true }) => {
+const Footer = ({ isDark = false }) => {
   return (
-    <footer className={`${isDark ? "bg-neutral-100" : "bg-white"} py-12`}>
+    <footer className={`${isDark ? "bg-neutral-100" : "bg-white"} py-10`}>
       {/* Main Footer Content */}
-      <div className="mx-auto grid grid-cols-7 py-8 md:w-[80%] w-[95%] h-[300px]">
-        <div className="flex flex-col">
-          <div className="flex flex-col">
+      <div className="mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-6 py-8 md:w-[80%] w-[95%]">
+       
+          <div className="flex flex-col w-full ml-10">
             {/* Logo */}
             <div className="flex items-center gap-2">
               <svg
@@ -42,7 +42,7 @@ const Footer = ({ isDark = true }) => {
             </span>
 
             {/* Social Icons */}
-            <div className="grid grid-cols-4 w-full mt-5 items-center">
+            <div className="grid grid-cols-4 w-full mx-auto max-w-[150px] mt-5 items-center gap-3 sm:gap-5">
               <svg width="35" height="35" viewBox="0 0 24 24" fill="none">
                 <path
                   d="M12 2C10.6868 2 9.38642 2.25866 8.17317 2.7612C6.95991 3.26375 5.85752 4.00035 4.92893 4.92893C3.05357 6.8043 2 9.34784 2 12C2 16.42 4.87 20.17 8.84 21.5C9.34 21.58 9.5 21.27 9.5 21V19.31C6.73 19.91 6.14 17.97 6.14 17.97C5.68 16.81 5.03 16.5 5.03 16.5C4.12 15.88 5.1 15.9 5.1 15.9C6.1 15.97 6.63 16.93 6.63 16.93C7.5 18.45 8.97 18 9.54 17.76C9.63 17.11 9.89 16.67 10.17 16.42C7.95 16.17 5.62 15.31 5.62 11.5C5.62 10.39 6 9.5 6.65 8.79C6.55 8.54 6.2 7.5 6.75 6.15C6.75 6.15 7.59 5.88 9.5 7.17C10.29 6.95 11.15 6.84 12 6.84C12.85 6.84 13.71 6.95 14.5 7.17C16.41 5.88 17.25 6.15 17.25 6.15C17.8 7.5 17.45 8.54 17.35 8.79C18 9.5 18.38 10.39 18.38 11.5C18.38 15.32 16.04 16.16 13.81 16.41C14.17 16.72 14.5 17.33 14.5 18.26V21C14.5 21.27 14.66 21.59 15.17 21.5C19.14 20.16 22 16.42 22 12C22 10.6868 21.7413 9.38642 21.2388 8.17317C20.7362 6.95991 19.9997 5.85752 19.0711 4.92893C18.1425 4.00035 17.0401 3.26375 15.8268 2.7612C14.6136 2.25866 13.3132 2 12 2Z"
@@ -75,9 +75,9 @@ const Footer = ({ isDark = true }) => {
               </svg>
             </div>
           </div>
-        </div>
-        <div></div>
-        <div className="col-span-3 grid grid-cols-3">
+     
+        <div className="hidden md:block"></div>
+        <div className="col-span-3 grid grid-cols-3 ml-10 ">
           {/* Support */}
           <div>
             <h3 className="text-neutral-900 font-bold mb-2">SUPPORT</h3>
@@ -142,10 +142,10 @@ const Footer = ({ isDark = true }) => {
             </ul>
           </div>
         </div>
-        <div className="col-span-1">
+        <div className="col-span-2 flex flex-col items-center">
           <h3 className="text-neutral-900 font-bold mb-2">ACCEPTED PAYMENTS</h3>
-          <div className="flex gap-4">
-            {" "}
+          <div >
+         
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="177"
@@ -209,11 +209,10 @@ const Footer = ({ isDark = true }) => {
                 </clipPath>
               </defs>
             </svg>
-        
           </div>
         </div>
       </div>
-
+      <hr className="border-t border-gray-300 my-4" />
       <p className="text-center text-gray-600 text-sm">
         © 2025 Al-jebali. All rights reserved.
       </p>
@@ -221,56 +220,39 @@ const Footer = ({ isDark = true }) => {
   );
 };
 
-// const Footer = () => {
-//   return (
-//     <footer className="bg-neutral-100 py-12 ">
-//       {/* Main Footer Content */}
+const NewsletterSection = () => {
+  return (
+    <div className="bg-neutral-100 py-12 px-6 md:px-20">
+      <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
+        {/* Left side: Title and description */}
+        <div className="text-center md:text-left max-w-md">
+          <h2 className="text-xl font-semibold text-gray-900 mb-2">
+            Join Our Newsletter
+          </h2>
+          <p className="text-sm text-gray-500">
+            We love to surprise our subscribers with occasional gifts.
+          </p>
+        </div>
 
-//       <div className=" mx-auto grid grid-cols-7 py-8 md:w-[80%] w-[95%] h-[300px] ">
-//         <div className="flex flex-col ">
-//           <div className="flex  flex-col">
-//             {/* Logo */}
-//             <div className="flex items-center gap-2">
-//
-//               <span className="text-neutral-900 text-lg font-bold">
-//                 Ecommerce
-//               </span>
-//             </div>
-//             <span className="text-neutral-600 font-light text-sm mt-4">
-//               DevCut is a YouTube channel for practical project-based learning.
-//             </span>
-//             <div className="grid grid-cols-4 w-full mt-5 items-center">
+        {/* Right side: Email input + button */}
+        <form className="flex w-full md:w-[auto] lg:min-w-[500px] max-w-lg">
+          <input
+            type="email"
+            placeholder="Your email address"
+            className="flex-grow px-4 py-2 border border-gray-300 rounded-l-md  "
+          />
+          <button
+            type="submit"
+            className="px-5 py-2 bg-gray-900 text-white text-sm font-medium rounded-r-md hover:bg-gray-800 transition cursor-pointer"
+          >
+            Subscribe
+          </button>
+        </form>
+      </div>
+    </div>
+  );
+};
 
-//             </div>
-//           </div>
-//         </div>{" "}
-//         <div></div>
-//         <div className="col-span-3 grid grid-cols-3">
-//
-//         </div>
-//         <div className="col-span-1">
-//           <h3 className="text-neutral-900 font-bold mb-2">ACCEPTED PAYMENTS</h3>
-//           <div className="flex gap-4">
-//             <svg
-//               width="24"
-//               height="24"
-//               viewBox="0 0 24 24"
-//               fill="none"
-//               xmlns="http://www.w3.org/2000/svg"
-//             >
-//               <circle cx="12" cy="12" r="11" stroke="#5C5F6A" strokeWidth="2" />
-//             </svg>
-//             <span className="text-neutral-600">AMEX</span>
-//             <span className="text-neutral-600">VISA</span>
-//           </div>
-//         </div>
-//       </div>
-
-//       <p className="text-center text-gray-600 text-sm">
-//         © 2025 Al-jebali. All rights reserved.
-//       </p>
-//     </footer>
-//   );
-// };
+export { NewsletterSection };
 
 export default Footer;

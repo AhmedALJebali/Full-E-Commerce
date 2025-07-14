@@ -2,7 +2,7 @@ import React from "react";
 
 function Header() {
   return (
-    <header className="w-[95%] lg:w-[80%] mx-auto flex flex-wrap lg:flex-nowrap items-center justify-between h-auto py-4 gap-4">
+    <header className="w-[95%] md:w-[80%] mx-auto flex flex-wrap lg:flex-nowrap items-center justify-between h-auto py-4 gap-4">
       {/* Left Side: Logo + Nav */}
       <div className="flex  flex-row items-center justify-between w-full lg:w-[60%] gap-4">
         {/* Logo */}
