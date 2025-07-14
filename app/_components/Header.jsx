@@ -1,85 +1,68 @@
-import React from "react";
+"use client";
+import React, { useState } from "react";
 
 function Header() {
+  const [menuOpen, setMenuOpen] = useState(false);
+
   return (
-    <header className="w-[95%] md:w-[80%] mx-auto flex flex-wrap lg:flex-nowrap items-center justify-between h-auto py-4 gap-4">
-      {/* Left Side: Logo + Nav */}
-      <div className="flex  flex-row items-center justify-between w-full lg:w-[60%] gap-4">
+    <header className="w-[95%] md:w-[80%] mx-auto flex flex-wrap items-center justify-between py-4 gap-4">
+      {/* Left Side: Logo + Nav Toggle */}
+      <div className="flex items-center justify-between w-full lg:w-auto gap-4">
         {/* Logo */}
         <div className="flex items-center gap-2">
-          <svg
-            width="40"
-            height="41"
-            viewBox="0 0 40 41"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <rect y="0.5" width="40" height="40" rx="20" fill="#0E1422" />
-            <path
-              d="M24.4769 11.8485L18.204 8.05509C17.6119 7.69292 16.9388 7.5015 16.2532 7.50031C14.2094 7.50031 12.3348 9.21225 12.3348 11.605V25.8073L24.4769 18.4669C26.9083 16.9947 26.9083 13.32 24.4769 11.8485ZM15.8484 18.948V11.3679L22.1163 15.1567L15.8484 18.948Z"
-              fill="white"
-            />
-            <path
-              d="M27.8489 33.4844C27.8489 33.5273 15.9908 33.466 15.9908 33.466L14.9434 33.3425C13.2467 33.144 11.9443 31.6233 12.002 29.8346C12.002 29.7917 12.0057 29.7519 12.0081 29.7103C12.0547 28.9365 12.3261 28.1961 12.7858 27.5885C12.9725 27.3461 13.2009 27.1425 13.4592 26.9882L22.4782 21.5725C24.3414 20.4535 25.8931 20.062 26.6999 18.0341C26.9974 17.2757 27.126 16.4562 27.0757 15.6379L27.0446 15.0865L27.9651 20.4204C28.083 21.3264 27.9013 22.2537 27.4211 23.0169C27.1326 23.4785 26.7475 23.8653 26.2951 24.1479L15.8295 29.3943C15.8191 29.4006 15.809 29.4074 15.7993 29.4149C15.5127 29.6293 15.6896 30.1069 16.0403 30.0867L24.7515 30.1403C26.4433 30.0417 27.8526 31.7112 27.8489 33.4844Z"
-              fill="white"
-            />
-          </svg>
+          {/* ... SVG Logo */}
           <span className="text-neutral-900 text-lg font-bold">Ecommerce</span>
         </div>
 
-        {/* Nav */}
-        <nav className="flex flex-row md:flex gap-4 text-sm text-neutral-500">
-          <ul className="cursor-pointer hover:text-black">Home</ul>
-          <ul className="flex items-center gap-1 cursor-pointer text-[#5C5F6A] hover:text-black group">
-            <span>Categories</span>
-            <svg
-              width="16"
-              height="16"
-              viewBox="0 0 24 25"
-              fill="currentColor"
-              xmlns="http://www.w3.org/2000/svg"
-              className="transition-colors"
-            >
-              <path
-                fillRule="evenodd"
-                clipRule="evenodd"
-                d="M12.5327 15.3117C12.2557 15.561 11.8042 15.563 11.5243 15.3163L6 10.4486L7.00331 9.54604L12.0207 13.9672L16.9863 9.5L18 10.3932L12.5327 15.3117Z"
-              />
-            </svg>
-          </ul>
-
-          <ul className="cursor-pointer hover:text-black">About</ul>
-          <ul className="cursor-pointer hover:text-black">Contact</ul>
-        </nav>
+        {/* Hamburger Icon (Mobile) */}
+        <button
+          onClick={() => setMenuOpen(!menuOpen)}
+          className="lg:hidden block text-neutral-700"
+        >
+          <svg width="24" height="24" fill="none" viewBox="0 0 24 24">
+            <path
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              d="M4 6h16M4 12h16M4 18h16"
+            />
+          </svg>
+        </button>
       </div>
 
-      {/* Right Side: Search + Icons */}
-      <div className="flex items-center w-full lg:w-[30%] gap-3 justify-between">
-        {/* Search */}
-        <div className="h-10 border w-[75%] border-neutral-100 px-4 rounded-md flex items-center gap-1">
-          {/* Search Icon */}
+      {/* Navigation */}
+      <nav
+        className={`${
+          menuOpen ? "flex" : "hidden"
+        } flex-col lg:flex lg:flex-row lg:items-center gap-4 text-sm text-neutral-500 w-full lg:w-auto`}
+      >
+        <ul className="cursor-pointer hover:text-black">Home</ul>
+        <ul className="flex items-center gap-1 cursor-pointer text-[#5C5F6A] hover:text-black group">
+          <span>Categories</span>
           <svg
-            width="20"
-            height="20"
+            width="16"
+            height="16"
             viewBox="0 0 24 25"
-            fill="none"
+            fill="currentColor"
             xmlns="http://www.w3.org/2000/svg"
           >
             <path
-              d="M11.2252 18.9799C13.28 18.9799 15.2507 18.1636 16.7037 16.7106C18.1566 15.2577 18.9729 13.287 18.9729 11.2322C18.9729 9.17737 18.1566 7.20672 16.7037 5.75374C15.2507 4.30077 13.28 3.4845 11.2252 3.4845C9.17041 3.4845 7.19976 4.30077 5.74679 5.75374C4.29381 7.20672 3.47754 9.17737 3.47754 11.2322C3.47754 13.287 4.29381 15.2577 5.74679 16.7106C7.19976 18.1636 9.17041 18.9799 11.2252 18.9799Z"
-              stroke="#878A92"
-              strokeWidth="1.44"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-            <path
-              d="M20.5225 21.5155L16.5782 17.5712"
-              stroke="#878A92"
-              strokeWidth="1.44"
-              strokeLinecap="round"
-              strokeLinejoin="round"
+              fillRule="evenodd"
+              clipRule="evenodd"
+              d="M12.5327 15.3117C12.2557 15.561 11.8042 15.563 11.5243 15.3163L6 10.4486L7.00331 9.54604L12.0207 13.9672L16.9863 9.5L18 10.3932L12.5327 15.3117Z"
             />
           </svg>
+        </ul>
+        <ul className="cursor-pointer hover:text-black">About</ul>
+        <ul className="cursor-pointer hover:text-black">Contact</ul>
+      </nav>
+
+      {/* Right Side: Search + Icons */}
+      <div className="flex flex-col sm:flex-row items-center w-full lg:w-[35%] gap-3 justify-between">
+        {/* Search */}
+        <div className="h-10 border w-full sm:w-[75%] border-neutral-100 px-4 rounded-md flex items-center gap-1">
+          {/* Search Icon */}
+          {/* ... */}
           <input
             className="w-full bg-transparent outline-none text-sm"
             type="text"
@@ -88,7 +71,8 @@ function Header() {
         </div>
 
         {/* Icons */}
-        <div className="flex items-center gap-5 w-[25%] justify-center">
+        <div className="flex items-center gap-5 w-full sm:w-auto justify-center">
+          {/* ... cart + user icons */}
           <svg
             width="24"
             height="24"
