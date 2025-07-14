@@ -58,11 +58,10 @@ function Header() {
       </nav>
 
       {/* Right Side: Search + Icons */}
-      <div className="flex flex-col sm:flex-row items-center w-full lg:w-[35%] gap-3 justify-between">
+      <div className="flex flex-row items-center w-full lg:w-[35%] gap-3 justify-between">
         {/* Search */}
         <div className="h-10 border w-full sm:w-[75%] border-neutral-100 px-4 rounded-md flex items-center gap-1">
           {/* Search Icon */}
-          {/* ... */}
           <input
             className="w-full bg-transparent outline-none text-sm"
             type="text"
@@ -71,7 +70,7 @@ function Header() {
         </div>
 
         {/* Icons */}
-        <div className="flex items-center gap-5 w-full sm:w-auto justify-center">
+        <div className="flex items-center gap-5  w-auto justify-center">
           {/* ... cart + user icons */}
           <svg
             width="24"

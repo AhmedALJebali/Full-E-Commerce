@@ -60,7 +60,7 @@ function Reviews({ product }) {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20 }}
               transition={{ duration: 0.3 }}
-              className="w-full grid grid-cols-10 gap-4 items-start mb-10"
+              className="w-full grid grid-cols-1 sm:grid-cols-10 gap-4 items-start mb-10"
             >
               <div>
                 <div className="rounded-full h-[70px] w-[70px] bg-amber-200 flex items-center justify-center font-bold text-2xl text-neutral-900">
@@ -68,7 +68,7 @@ function Reviews({ product }) {
                 </div>
               </div>
 
-              <div className="col-span-9">
+              <div className="sm:col-span-9">
                 <div className="flex items-center justify-between mb-1">
                   <h3 className="text-xl font-semibold">{review.author}</h3>
                   <div className="flex">

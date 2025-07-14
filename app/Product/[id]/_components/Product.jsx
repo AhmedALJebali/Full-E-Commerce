@@ -161,7 +161,7 @@ function Product({ product }) {
         </div>
 
         {/* Add to Cart Button */}
-        <div className="flex flex-col sm:flex-row items-center gap-3 w-full">
+        <div className="flex flex-row items-center gap-3 w-full">
           <button
             disabled={!selectedSize}
             className={`w-full sm:w-[80%] py-2 text-sm sm:text-base font-semibold rounded-md ${

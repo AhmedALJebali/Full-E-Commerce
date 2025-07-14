@@ -2,8 +2,8 @@ import React from "react";
 
 function Details({ product }) {
   return (
-    <>
-      <h1 className="text-4xl md:text-6xl font-bold text-neutral-900 mb-8">
+    <div className="w-full max-w-5xl mx-auto px-4 md:px-6 lg:px-8" >
+      <h1 className="text-4xl md:text-5xl font-bold text-neutral-900 mb-6">
         Details
       </h1>
 
@@ -17,7 +17,7 @@ function Details({ product }) {
           <li key={index}>{feature}</li>
         ))}
       </ul>
-    </>
+    </div>
   );
 }
 
