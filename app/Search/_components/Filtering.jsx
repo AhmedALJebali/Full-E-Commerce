@@ -8,35 +8,21 @@ function Filtering({ AppliedFilters, setAppliedFilters }) {
   const STEP = 10;
   const MIN = 0;
   const MAX = 10000;
-
-  const [selectedCategories, setSelectedCategories] = useState(
-    AppliedFilters?.categories || []
-  );
-  const [selectedColor, setSelectedColor] = useState(
-    AppliedFilters?.colors || []
-  );
-  const [selectedSize, setSelectedSize] = useState(AppliedFilters?.sizes || []);
-  const [prices, setPrices] = useState(AppliedFilters?.price || [100, 890]);
-
+  // تقسيم المقاسات لأرقام وحروف
   const numberSizes = sizes.filter((s) => !isNaN(Number(s)));
   const letterSizes = sizes.filter((s) => isNaN(Number(s)));
+  // دالة عامة للتبديل بين تفعيل/إلغاء فلتر
+  const handleToggleFilter = (key, value) => {
+    const currentValues = AppliedFilters[key] || [];
+    const newValues = currentValues.includes(value)
+      ? currentValues.filter((v) => v !== value)
+      : [...currentValues, value];
 
-  const handleToggle = (stateSetter, values, value) => {
-    stateSetter(
-      values.includes(value)
-        ? values.filter((v) => v !== value)
-        : [...values, value]
-    );
+    setAppliedFilters({ ...AppliedFilters, [key]: newValues });
   };
-
-  useEffect(() => {
-    setAppliedFilters({
-      categories: selectedCategories,
-      colors: selectedColor,
-      sizes: selectedSize,
-      price: prices,
-    });
-  }, [selectedCategories, selectedColor, selectedSize, prices]);
+  const handlePriceChange = (vals) => {
+    setAppliedFilters({ ...AppliedFilters, price: vals });
+  };
 
   return (
     <div className="w-full md:w-[250px] border border-neutral-300 p-4 rounded-md space-y-6">
@@ -53,14 +39,8 @@ function Filtering({ AppliedFilters, setAppliedFilters }) {
             >
               <input
                 type="checkbox"
-                checked={selectedCategories.includes(category)}
-                onChange={() =>
-                  handleToggle(
-                    setSelectedCategories,
-                    selectedCategories,
-                    category
-                  )
-                }
+                checked={AppliedFilters.categories?.includes(category)}
+                onChange={() => handleToggleFilter("categories", category)}
                 className="accent-neutral-900"
               />
               {category}
@@ -72,19 +52,17 @@ function Filtering({ AppliedFilters, setAppliedFilters }) {
       {/* Colors */}
       <div>
         <h3 className="text-sm font-semibold text-neutral-900 mb-3">Colors</h3>
-        <div className="grid grid-cols-3 md:grid-cols-4 gap-3 max-h-[100px] overflow-y-auto pr-1">
+        <div className="grid grid-cols-5 md:grid-cols-4 gap-3 max-h-[100px] pt-4 overflow-y-auto px-1 ">
           {colors.map((color, index) => (
             <div
               key={index}
               style={{ backgroundColor: color }}
               className={`w-6 h-6 rounded-full ring-2 cursor-pointer ${
-                selectedColor.includes(color)
+                AppliedFilters.colors.includes(color)
                   ? "ring-neutral-900 ring-offset-2"
                   : "ring-transparent"
               }`}
-              onClick={() =>
-                handleToggle(setSelectedColor, selectedColor, color)
-              }
+              onClick={() => handleToggleFilter("colors", color)}
             />
           ))}
         </div>
@@ -101,14 +79,12 @@ function Filtering({ AppliedFilters, setAppliedFilters }) {
               {letterSizes.map((size, index) => (
                 <button
                   key={index}
-                  className={`px-3 py-1 rounded border text-sm ${
-                    selectedSize.includes(size)
+                  className={`px-3 py-1 rounded border text-sm cursor-pointer${
+                    AppliedFilters?.sizes?.includes(size)
                       ? "border-neutral-900"
                       : "border-neutral-300"
                   }`}
-                  onClick={() =>
-                    handleToggle(setSelectedSize, selectedSize, size)
-                  }
+                  onClick={() => handleToggleFilter("sizes", size)}
                 >
                   {size}
                 </button>
@@ -124,14 +100,12 @@ function Filtering({ AppliedFilters, setAppliedFilters }) {
               {numberSizes.map((size, index) => (
                 <button
                   key={index}
-                  className={`px-3 py-1 rounded border text-sm ${
-                    selectedSize.includes(size)
+                  className={`px-3 py-1 rounded border text-sm  cursor-pointer${
+                    AppliedFilters.sizes.includes(size)
                       ? "border-neutral-900"
                       : "border-neutral-300"
                   }`}
-                  onClick={() =>
-                    handleToggle(setSelectedSize, selectedSize, size)
-                  }
+                  onClick={() => handleToggleFilter("sizes", size)}
                 >
                   {size}
                 </button>
@@ -148,15 +122,15 @@ function Filtering({ AppliedFilters, setAppliedFilters }) {
           step={STEP}
           min={MIN}
           max={MAX}
-          values={prices}
-          onChange={(vals) => setPrices(vals)}
+          values={AppliedFilters.price || [100, 890]}
+          onChange={handlePriceChange}
           renderTrack={({ props, children }) => (
             <div
               {...props}
               className=" mx-auto h-2 w-[80%] md:w-full rounded-full"
               style={{
                 background: getTrackBackground({
-                  values: prices,
+                  values: AppliedFilters.price || [100, 890],
                   colors: ["#d4d4d8", "#171717", "#d4d4d8"],
                   min: MIN,
                   max: MAX,
@@ -175,7 +149,7 @@ function Filtering({ AppliedFilters, setAppliedFilters }) {
                 className="relative w-4 h-4 bg-neutral-900 rounded-full border border-black"
               >
                 <div className="absolute top-5 left-1/2 -translate-x-1/2 text-xs bg-neutral-900 text-white px-2 py-1 rounded">
-                  ${prices[index].toFixed(2)}
+                  ${AppliedFilters.price[index].toFixed(2)}
                 </div>
               </div>
             );

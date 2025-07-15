@@ -17,7 +17,6 @@ export default function SearchPage() {
 
   return (
     <div className="w-[95%] md:w-[90%] mx-auto my-10">
-      {/* زر الفلاتر للهاتف فقط */}
       <div className="md:hidden mb-5">
         <button
           className="flex items-center gap-2 px-4 py-2 text-sm font-medium text-white bg-black rounded-md"
@@ -28,9 +27,8 @@ export default function SearchPage() {
         </button>
       </div>
 
-      {/* الصفحة بالكامل */}
+     
       <div className="flex flex-col md:flex-row gap-6 ">
-        {/* Sidebar Filtering في الشاشات الكبيرة فقط */}
         <div className="hidden md:block md:w-[250px] shrink-0">
           <Filtering
             AppliedFilters={AppliedFilters}
@@ -47,7 +45,7 @@ export default function SearchPage() {
         </div>
       </div>
 
-      {/* Overlay لفلاتر الهاتف */}
+     
       {showMobileFilters && (
         <div className="fixed inset-0 z-50 bg-white overflow-y-auto p-5">
           <div className="flex justify-between items-center mb-4">
