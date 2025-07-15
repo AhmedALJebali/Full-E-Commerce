@@ -1999,7 +1999,7 @@ const colors = [
   ...new Set(Products.flatMap((p) => p.colors?.map((c) => c.color) || [])),
 ];
 const sizes = [...new Set(Products.flatMap((p) => p.sizes || []))];
-
+sizes.sort().reverse();
 const ProductsContext = createContext();
 
 export const ProductsProvider = ({ children }) => {
