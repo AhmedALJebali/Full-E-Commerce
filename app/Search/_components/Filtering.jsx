@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useProducts } from "@/app/_context/Products";
+import { useProducts } from "@/app/_context/ProductsContext";
 import { Range, getTrackBackground } from "react-range";
 
 function Filtering({ AppliedFilters, setAppliedFilters }) {

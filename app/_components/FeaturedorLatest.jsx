@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import ProductsSwiper from "./ProductsSwiper";
-import { useProducts } from "../_context/Products";
+import { useProducts } from "../_context/ProductsContext";
 
 function BestSelling() {
   const { products } = useProducts();
@@ -45,9 +45,7 @@ function BestSelling() {
           transition={{ duration: 0.4 }}
           className="w-full"
         >
-          <ProductsSwiper
-            products={isFeatured ? featured : latest}
-          />
+          <ProductsSwiper products={isFeatured ? featured : latest} />
         </motion.div>
       </AnimatePresence>
     </section>

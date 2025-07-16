@@ -3,7 +3,7 @@ import Breadcrumb from "@/app/_components/BreadCrump";
 import ProductsSwiper from "@/app/_components/ProductsSwiper";
 import Product from "./_components/Product";
 import { useParams } from "next/navigation";
-import { useProducts } from "@/app/_context/Products";
+import { useProducts } from "@/app/_context/ProductsContext";
 import DetailsAndReviews from "./_components/DetailsAndReviews";
 
 export default function ProductsPage() {

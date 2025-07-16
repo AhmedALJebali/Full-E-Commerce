@@ -1,6 +1,6 @@
-"use client"
+"use client";
 import ProductsSwiper from "./ProductsSwiper";
-import { useProducts } from "@/app/_context/Products";
+import { useProducts } from "@/app/_context/ProductsContext";
 
 function BestSelling() {
   const { products } = useProducts();

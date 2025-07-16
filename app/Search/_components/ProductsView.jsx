@@ -1,6 +1,6 @@
 import ProductCard from "@/app/_components/ProductCard";
 import React, { useState, useEffect } from "react";
-import { useProducts } from "@/app/_context/Products";
+import { useProducts } from "@/app/_context/ProductsContext";
 import { motion, AnimatePresence } from "framer-motion";
 import { X } from "lucide-react";
 const ITEMS_PER_PAGE = 8;

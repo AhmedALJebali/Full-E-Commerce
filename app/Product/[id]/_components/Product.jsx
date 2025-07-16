@@ -1,21 +1,46 @@
-import { useState, useRef } from "react";
+import { useState, useRef, use, useEffect } from "react";
 import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
+import { useCart } from "@/app/_context/CartContext";
 function Product({ product }) {
   const [quantity, setQuantity] = useState(1);
   const [selectedColor, setSelectedColor] = useState("#ffffff");
   const [selectedSize, setSelectedSize] = useState("");
   const swiperRef = useRef(null);
+  const { handleAddToCart, isItemInCart } = useCart();
+
+  const selectedImage =
+    product.colors.find((c) => c.color === selectedColor)?.image ||
+    product.image;
+
+  const item = {
+    product: product.id,
+    options: {
+      color: selectedColor,
+      size: selectedSize,
+    },
+    quantity,
+    title: product.title,
+    image: selectedImage,
+    price: product.price,
+  };
+
+  const isAdded = isItemInCart(item);
+
+  const onAddToCart = () => {
+    console.log(item);
+    handleAddToCart(item);
+  };
   const increaseQuantity = () => setQuantity((prev) => prev + 1);
   const decreaseQuantity = () => {
     if (quantity > 1) setQuantity((prev) => prev - 1);
   };
   const handleColorClick = (color, index) => {
     setSelectedColor(color);
-    swiperRef.current?.slideToLoop(index); 
+    swiperRef.current?.slideToLoop(index);
   };
 
   const handleSlideChange = (swiper) => {
@@ -163,14 +188,19 @@ function Product({ product }) {
         {/* Add to Cart Button */}
         <div className="flex flex-row items-center gap-3 w-full">
           <button
-            disabled={!selectedSize}
+            disabled={!selectedSize || isAdded}
+            onClick={onAddToCart}
             className={`w-full sm:w-[80%] py-2 text-sm sm:text-base font-semibold rounded-md ${
-              selectedSize
+              selectedSize && !isAdded
                 ? "bg-neutral-900 text-white hover:bg-neutral-800 cursor-pointer transition-all"
-                : "bg-neutral-300 text-gray-600 cursor-context-menu"
+                : "bg-neutral-300 text-gray-600 cursor-not-allowed"
             }`}
           >
-            {!selectedSize ? "Select a size" : "Add to Cart"}
+            {!selectedSize
+              ? "Select a size"
+              : isAdded
+              ? "Already in Cart"
+              : "Add to Cart"}
           </button>
           <div className="w-[42px] h-[42px] rounded-[3.5px] border flex items-center border-neutral-300 group cursor-pointer">
             <svg
