@@ -23,7 +23,7 @@ function ProductCardcart({ item }) {
   };
 
   return (
-    <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-white p-4 rounded-md shadow-sm dark:bg-gray-800">
+    <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-white p-4 rounded-md shadow-sm">
       {/* Left Section: Image & Details */}
       <div className="flex flex-1 items-center gap-4">
         {/* Product Image */}
@@ -38,10 +38,10 @@ function ProductCardcart({ item }) {
 
         {/* Product Info */}
         <div className="flex flex-col">
-          <p className="text-sm sm:text-base font-medium text-neutral-900 dark:text-white line-clamp-1">
+          <p className="text-sm sm:text-base font-medium text-neutral-900  line-clamp-1">
             {item.title}
           </p>
-          <p className="text-xs text-gray-500 dark:text-gray-400 flex items-center gap-2 mt-1">
+          <p className="text-xs text-gray-500  flex items-center gap-2 mt-1">
             Color:
             <span
               className="w-4 h-4 rounded-full border border-gray-300"
@@ -56,7 +56,7 @@ function ProductCardcart({ item }) {
       <div className="flex items-center gap-4 flex-wrap sm:flex-nowrap justify-between sm:justify-end sm:w-[300px]">
         {" "}
         {/* Price */}
-        <div className="text-base font-bold text-neutral-900 dark:text-white">
+        <div className="text-base font-bold text-neutral-900">
           ${item.price}
         </div>
         {/* Quantity Controls */}

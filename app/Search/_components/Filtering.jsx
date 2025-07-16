@@ -79,9 +79,9 @@ function Filtering({ AppliedFilters, setAppliedFilters }) {
               {letterSizes.map((size, index) => (
                 <button
                   key={index}
-                  className={`px-3 py-1 rounded border text-sm cursor-pointer${
+                  className={`px-3 py-1 rounded border text-sm cursor-pointer ${
                     AppliedFilters?.sizes?.includes(size)
-                      ? "border-neutral-900"
+                      ? "border-neutral-900 "
                       : "border-neutral-300"
                   }`}
                   onClick={() => handleToggleFilter("sizes", size)}
@@ -100,9 +100,9 @@ function Filtering({ AppliedFilters, setAppliedFilters }) {
               {numberSizes.map((size, index) => (
                 <button
                   key={index}
-                  className={`px-3 py-1 rounded border text-sm  cursor-pointer${
+                  className={`px-3 py-1 rounded border text-sm cursor-pointer ${
                     AppliedFilters.sizes.includes(size)
-                      ? "border-neutral-900"
+                      ? "border-neutral-900 "
                       : "border-neutral-300"
                   }`}
                   onClick={() => handleToggleFilter("sizes", size)}
