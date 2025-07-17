@@ -7,7 +7,7 @@ function ProductsSwiper({ products }) {
   return (
     <>
       <Swiper
-        slidesPerView={1}
+        slidesPerView={2}
         spaceBetween={8}
         breakpoints={{
           640: {

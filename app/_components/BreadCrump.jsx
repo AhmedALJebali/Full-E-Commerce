@@ -1,26 +1,26 @@
 import Link from "next/link";
-const Breadcrumb = ({ productTitle, className }) => {
+import { ChevronRight } from "lucide-react"; 
+
+const Breadcrumb = ({ productTitle, className = "" }) => {
   return (
     <nav
       className={
-        "flex items-center mx-auto w-[95%] md:w-[80%] text-sm text-gray-500 pt-4 border-t border-neutral-200 mb-4 mt-1" +
+        "flex items-center mx-auto w-[95%] md:w-[80%] text-sm text-gray-500 pt-4 border-t border-neutral-200 mb-4 mt-1 " +
         className
       }
+      aria-label="Breadcrumb" 
     >
-      <Link href="/" className="font-medium text-neutral-600 cursor-pointer">
+      <Link
+        href="/"
+        className="font-medium text-neutral-600 cursor-pointer hover:underline"
+      >
         Ecommerce
       </Link>
-      <svg
-        className="w-4 h-4 text-gray-500 mx-2"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="2"
-        viewBox="0 0 24 24"
-      >
-        <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
-      </svg>
-      <span className="text-neutral-900 font-bold">
-        {productTitle ? productTitle : <>Product Title</>}
+
+      <ChevronRight className="w-4 h-4 text-gray-500 mx-2" aria-hidden="true" />
+
+      <span className="text-neutral-900 font-bold" aria-current="page">
+        {productTitle || "Product Title"}
       </span>
     </nav>
   );

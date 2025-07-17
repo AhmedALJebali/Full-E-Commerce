@@ -1,41 +1,35 @@
 import React from "react";
 import Image from "next/image";
+import { ArrowRight } from "lucide-react";
+import Link from "next/link";
+
 function Hero() {
   return (
-    <section className="bg-[#F6F6F6] w-full py-16 h-[450px]">
-      <div className="w-[95%] lg:w-[80%] h-full mx-auto flex flex-col-reverse lg:flex-row items-center justify-center  gap-10 ">
+    <section
+      className="bg-[#F6F6F6] w-full py-16 h-[450px]"
+      aria-labelledby="hero-heading"
+    >
+      <div className="w-[95%] lg:w-[80%] h-full mx-auto flex flex-col-reverse lg:flex-row items-center justify-center gap-10">
         {/* Left Content */}
-        <div className="flex flex-col items-center lg:items-start  text-center lg:text-left">
-          <h1 className="text-4xl md:text-5xl font-bold text-neutral-900">
+        <div className="flex flex-col items-center lg:items-start text-center lg:text-left">
+          <h1
+            id="hero-heading"
+            className="text-4xl md:text-5xl font-bold text-neutral-900"
+          >
             Fresh Arrivals Online
           </h1>
-          <h3 className="text-lg md:text-xl font-normal text-neutral-600 mt-2 mb-5">
+          <p className="text-lg md:text-xl font-normal text-neutral-600 mt-2 mb-5">
             Discover Our Newest Collection Today
-          </h3>
+          </p>
 
-          <button className="flex items-center gap-2 bg-neutral-900 text-white cursor-pointer px-6 py-3 rounded-md mt-6 hover:bg-neutral-800 transition">
+          <Link
+            href="/Search"
+            className="flex items-center gap-2 bg-neutral-900 text-white cursor-pointer px-6 py-3 rounded-md mt-6 hover:bg-neutral-800 transition"
+            aria-label="View Collection"
+          >
             View Collection
-            <svg
-              width="20"
-              height="20"
-              viewBox="0 0 24 24"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                fillRule="evenodd"
-                clipRule="evenodd"
-                d="M18.2896 11.4958C18.5701 11.7743 18.5701 12.2257 18.2896 12.5042L12.7541 18L11.7384 16.9916L16.766 12L11.7384 7.00845L12.7541 6L18.2896 11.4958Z"
-                fill="#F6F6F6"
-              />
-              <path
-                fillRule="evenodd"
-                clipRule="evenodd"
-                d="M17.9972 12.7131H5.5V11.2869H17.9972V12.7131Z"
-                fill="#F6F6F6"
-              />
-            </svg>
-          </button>
+            <ArrowRight className="w-5 h-5" />
+          </Link>
         </div>
 
         {/* Right Image */}
@@ -70,7 +64,6 @@ function Hero() {
             <circle opacity="0.6" cx="170" cy="170" r="170" fill="#E9E9EB" />
           </svg>
         </div>
-    
       </div>
     </section>
   );

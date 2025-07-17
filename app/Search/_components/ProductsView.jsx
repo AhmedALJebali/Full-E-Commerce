@@ -5,43 +5,54 @@ import { motion, AnimatePresence } from "framer-motion";
 import { X } from "lucide-react";
 const ITEMS_PER_PAGE = 8;
 
-function ProductsView({ AppliedFilters, setAppliedFilters }) {
+function ProductsView({ AppliedFilters = [], setAppliedFilters, category }) {
   const { products } = useProducts();
   const [filteredProducts, setFilteredProducts] = useState(products);
   const [currentPage, setCurrentPage] = useState(1);
+  const decodedCategory = decodeURIComponent(category);
+  if (!category) {
+    useEffect(() => {
+      if (!products?.length) return;
 
-  useEffect(() => {
-    if (!products?.length) return;
+      const filtered = products.filter((product) => {
+        const {
+          colors = [],
+          sizes = [],
+          categories = [],
+          price = [],
+        } = AppliedFilters;
 
-    const filtered = products.filter((product) => {
-      const {
-        colors = [],
-        sizes = [],
-        categories = [],
-        price = [],
-      } = AppliedFilters;
+        const matchColor =
+          !colors.length ||
+          product.colors?.some(({ color }) => colors.includes(color));
 
-      const matchColor =
-        !colors.length ||
-        product.colors?.some(({ color }) => colors.includes(color));
+        const matchSize =
+          !sizes.length || product.sizes?.some((size) => sizes.includes(size));
 
-      const matchSize =
-        !sizes.length || product.sizes?.some((size) => sizes.includes(size));
+        const matchCategory =
+          !categories.length || categories.includes(product.category);
 
-      const matchCategory =
-        !categories.length || categories.includes(product.category);
+        const matchPrice =
+          !price.length ||
+          (price[0] <= product.price && product.price <= price[1]);
 
-      const matchPrice =
-        !price.length ||
-        (price[0] <= product.price && product.price <= price[1]);
+        return matchColor && matchSize && matchCategory && matchPrice;
+      });
 
-      return matchColor && matchSize && matchCategory && matchPrice;
-    });
+      setFilteredProducts(filtered);
+      setCurrentPage(1);
+    }, [AppliedFilters, products]);
+  } else {
+    useEffect(() => {
+      if (!products?.length) return;
 
-    setFilteredProducts(filtered);
-    setCurrentPage(1);
-  }, [AppliedFilters, products]);
-
+      const filtered = products.filter(
+        (product) => product.category === decodedCategory
+      );
+      setFilteredProducts(filtered);
+      setCurrentPage(1);
+    }, [products]);
+  }
   const totalPages = Math.ceil(filteredProducts.length / ITEMS_PER_PAGE);
 
   const paginatedProducts = filteredProducts.slice(
@@ -65,34 +76,36 @@ function ProductsView({ AppliedFilters, setAppliedFilters }) {
     <div className="w-full px-4 md:px-6 flex flex-col min-h-full max-h-full">
       <div className="flex flex-col gap-3 mb-3">
         <h1 className="text-xl md:text-2xl font-bold text-neutral-900">
-          Applied Filters:
+          {category ? decodedCategory : "Applied Filters:"}
         </h1>
-        <div className="flex flex-wrap gap-5">
-          {Object.entries(AppliedFilters)
-            .filter(([key, value]) => key !== "price")
-            .map(([key, value]) =>
-              Array.isArray(value) ? (
-                value.map((item, index) => (
-                  <div
-                    key={index}
-                    className="px-4 py-3 rounded-2xl border border-neutral-300 text-neutral-900 text-sm flex items-center gap-1"
-                  >
-                    <span className="capitalize text-sm">
-                      {key} : {item}
-                    </span>
-                    <button
-                      onClick={() => removeFilter(key, item)}
-                      className="text-neutral-400 hover:text-red-700 cursor-pointer"
+        {!category && (
+          <div className="flex flex-wrap gap-5">
+            {Object.entries(AppliedFilters)
+              .filter(([key, value]) => key !== "price")
+              .map(([key, value]) =>
+                Array.isArray(value) ? (
+                  value.map((item, index) => (
+                    <div
+                      key={index}
+                      className="px-4 py-3 rounded-2xl border border-neutral-300 text-neutral-900 text-sm flex items-center gap-1"
                     >
-                      <X size={23} />
-                    </button>
-                  </div>
-                ))
-              ) : (
-                <></>
-              )
-            )}
-        </div>
+                      <span className="capitalize text-sm">
+                        {key} : {item}
+                      </span>
+                      <button
+                        onClick={() => removeFilter(key, item)}
+                        className="text-neutral-400 hover:text-red-700 cursor-pointer"
+                      >
+                        <X size={23} />
+                      </button>
+                    </div>
+                  ))
+                ) : (
+                  <></>
+                )
+              )}
+          </div>
+        )}
       </div>
 
       <h2 className="text-xs md:text-sm text-neutral-400 tracking-wider mb-4">

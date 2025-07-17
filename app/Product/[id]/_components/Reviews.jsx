@@ -7,7 +7,7 @@ function Reviews({ product }) {
     Math.min(product.reviews.length, 3)
   );
 
-  const reviewsRef = useRef(); // ✅ مرجع لمنطقة التعليقات
+  const reviewsRef = useRef(); 
 
   const handleLoadMore = () => {
     setVisibleCount((prev) => prev + 5);
@@ -15,7 +15,7 @@ function Reviews({ product }) {
 
   const handleShowLess = () => {
     setVisibleCount(3);
-    reviewsRef.current?.scrollIntoView({ behavior: "smooth" }); // ✅ تمرير ناعم لأعلى
+    reviewsRef.current?.scrollIntoView({ behavior: "smooth" }); 
   };
 
   const visibleReviews = product.reviews.slice(0, visibleCount);
