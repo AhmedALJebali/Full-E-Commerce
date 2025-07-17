@@ -1,3 +1,4 @@
+"use client";
 import ProductCard from "@/app/_components/ProductCard";
 import React, { useState, useEffect } from "react";
 import { useProducts } from "@/app/_context/ProductsContext";
