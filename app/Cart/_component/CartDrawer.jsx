@@ -126,9 +126,9 @@ export default function CartDrawer({ onClose }) {
           >
             View Cart
           </Link>
-          <button className="block text-center w-full text-xs text-gray-500 underline cursor-pointer">
+          <Link href="/Checkout" className="block text-center w-full text-xs text-gray-500 underline cursor-pointer">
             Checkout
-          </button>
+          </Link>
         </div>
       </div>
     </div>

@@ -1,4 +1,3 @@
-// app/search/page.tsx أو app/search/page.jsx (حسب استخدامك)
 "use client";
 import { useSearchParams } from "next/navigation";
 import { useState } from "react";

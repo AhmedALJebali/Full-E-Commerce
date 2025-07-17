@@ -61,7 +61,7 @@ export default function CartPage() {
           <div className="flex justify-center gap-2">
             <span className="text-sm text-gray-500">or</span>
             <Link
-              href="/"
+              href="/Search"
               className="inline-flex items-center gap-2 text-sm font-medium underline"
             >
               Continue Shopping

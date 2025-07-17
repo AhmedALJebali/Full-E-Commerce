@@ -123,7 +123,7 @@ function Header() {
           >
             Search
           </Link>
-          <Link href="/contact" className="hover:text-black" title="Contact us">
+          <Link href="/Contact" className="hover:text-black" title="Contact us">
             Contact
           </Link>
         </nav>
