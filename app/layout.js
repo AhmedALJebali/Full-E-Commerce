@@ -3,6 +3,8 @@ import "./globals.css";
 import Header from "./_components/Header";
 import { ProductsProvider } from "./_context/ProductsContext";
 import { CartProvider } from "./_context/CartContext";
+import { UserProvider } from "./_context/UserContext";
+import { WishlistProvider } from "./_context/WishListContext";
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -29,7 +31,6 @@ export const metadata = {
   },
 };
 
-
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
@@ -38,10 +39,14 @@ export default function RootLayout({ children }) {
       >
         {" "}
         <ProductsProvider>
-          <CartProvider>
-            <Header />
-            {children}
-          </CartProvider>
+          <UserProvider>
+            <CartProvider>
+              <WishlistProvider>
+                <Header />
+                {children}
+              </WishlistProvider>
+            </CartProvider>
+          </UserProvider>
         </ProductsProvider>
       </body>
     </html>

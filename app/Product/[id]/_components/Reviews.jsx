@@ -60,9 +60,9 @@ function Reviews({ product }) {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20 }}
               transition={{ duration: 0.3 }}
-              className="w-full grid grid-cols-1 sm:grid-cols-10 gap-4 items-start mb-10"
+              className="w-full grid grid-cols-1 sm:grid-cols-12 gap-4 items-start mb-10"
             >
-              <div>
+              <div className="col-span-1 sm:col-span-2 lg:col-span-1 ">
                 <div className="rounded-full h-[70px] w-[70px] bg-amber-200 flex items-center justify-center font-bold text-2xl text-neutral-900">
                   {initials}
                 </div>

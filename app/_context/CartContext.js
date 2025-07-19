@@ -128,3 +128,70 @@ export const useCart = () => useContext(CartContext);
 //     },
 //   },
 // ];
+
+// Product {
+//   id: number
+//   title: string
+//   image: string
+//   price: number
+//   colors: string[]         // ex: [{color:"#000000",image: "/cover.svg"}]
+//   sizes: string[]          // ex: ["XS", "S", "M", "L", "XL"]
+//   reviews: Review[]
+// }
+
+// Reviews [{
+//   id: number
+//   user: User
+//   product: Product
+//   rating: number
+//   comment: string
+//   createdAt: Date
+// }
+// ]
+
+// CartItem {
+//   id: number
+//   user: User
+//   product: Product
+//   title: string            // optional redundancy
+//   image: string            // optional redundancy
+//   price: number
+//   quantity: number
+//   options: {
+//     color: string          // HEX code
+//     size: string           // enum
+//   }
+// }
+
+// Order {
+//   id: number
+//   user: User
+//   items: CartItem[]
+//   totalAmount: number
+//   status: "pending" | "shipped" | "delivered"
+//   createdAt: Date
+// }
+
+// User {
+//   id: 1,
+//   username: "john_doe",         // Default Strapi field
+//   email: "john@example.com",    // Default Strapi field
+//   provider: "local",            // Auth provider
+//   confirmed: true,              // Email confirmed
+//   blocked: false,
+//   createdAt: "2025-07-17T10:00:00Z",
+//   updatedAt: "2025-07-17T10:00:00Z",
+//   Full_Name: "John Doe",
+//   Phone: "+1-555-555-5555",
+//   Gender: "Male",               // Enum: Male / Female / Other
+//   ProfilePicture: "https://via.placeholder.com/150",
+//   Street_Address: "123 Main St",
+//   City: "New York",
+//   Country: "USA",
+//   State: "NY",
+//   ZipCode: "10001",
+//   Country: "USA",
+//   Wishlist: [WishlistItem],      // One-to-Many: User → WishlistItem[]
+//   Cart: [CartItem],              // One-to-Many: User → CartItem[]
+//   Orders: [Order]                // One-to-Many: User → Order[]
+// }

@@ -1,6 +1,6 @@
 import React from "react";
 import Image from "next/image";
-
+import Link from "next/link";
 function FashionParadise() {
   return (
     <div className="mt-20 bg-[linear-gradient(to_right,_#f6f6f6_30%,_#ffffff_70%)]">
@@ -14,7 +14,7 @@ function FashionParadise() {
             Discover Our Newest Collection Today
           </h3>
 
-          <button className="flex items-center gap-2 bg-neutral-900 text-white cursor-pointer px-4 sm:px-6 py-2 sm:py-3 rounded-md mt-4 sm:mt-6 hover:bg-neutral-800 transition text-sm sm:text-base">
+          <Link href="/Search" className="flex items-center gap-2 bg-neutral-900 text-white cursor-pointer px-4 sm:px-6 py-2 sm:py-3 rounded-md mt-4 sm:mt-6 hover:bg-neutral-800 transition text-sm sm:text-base">
             View Collection
             <svg
               width="20"
@@ -36,7 +36,7 @@ function FashionParadise() {
                 fill="#F6F6F6"
               />
             </svg>
-          </button>
+          </Link>
         </div>
 
         {/* الصورة */}

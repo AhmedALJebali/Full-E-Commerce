@@ -54,9 +54,9 @@ export default function CartPage() {
             </dl>
           </div>
 
-          <button className="w-full rounded-lg bg-neutral-900 px-5 py-2.5 text-sm font-medium text-white hover:bg-neutral-800">
+          <Link href="/Checkout" className="block text-center w-full rounded-lg bg-neutral-900 px-5 py-2.5 text-sm font-medium text-white hover:bg-neutral-800">
             Proceed to Checkout
-          </button>
+          </Link>
 
           <div className="flex justify-center gap-2">
             <span className="text-sm text-gray-500">or</span>

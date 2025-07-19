@@ -1,6 +1,6 @@
 import Footer, { NewsletterSection } from "@/app/_components/Footer";
 import Breadcrumb from "../_components/BreadCrump";
-// ✅ SEO Metadata
+//  SEO Metadata
 export const metadata = {
   title: "Search Products | YourStore",
   description:

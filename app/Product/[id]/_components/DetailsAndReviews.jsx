@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Details from "./Details";
 import Reviews from "./Reviews";
+
 function DetailsAndReviews({ product }) {
   const [isReview, setisReview] = useState(true);
   return (

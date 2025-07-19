@@ -37,14 +37,17 @@ export default function ContactPage() {
   return (
     <main className="min-h-screen bg-white py-12 px-4 sm:px-8 md:px-16 lg:px-32">
       <section className="max-w-3xl mx-auto">
-        <h1 className="text-4xl font-bold mb-4 text-neutral-800">Contact Us</h1>
         <p className="mb-8 text-neutral-600 text-lg">
-          We'd love to hear from you! Send us your questions or feedback.
+          We'd love to hear from you! Whether you have a question about our
+          products, need assistance with an order, or just want to share your
+          feedback — we're here to help. Our team values your input and will do
+          our best to get back to you as soon as possible. Don't hesitate to
+          reach out; your thoughts matter to us!
         </p>
 
         <form onSubmit={handleSubmit} className="grid grid-cols-1 gap-6">
           <div>
-            <label className="block mb-1 text-xs font-semibold text-neutral-700 tracking-wide">
+            <label className="block mb-1 font-medium tracking-wide">
               Name
             </label>
             <input
@@ -52,14 +55,14 @@ export default function ContactPage() {
               name="name"
               value={form.name}
               onChange={handleChange}
-              className="w-full px-4 py-3 border border-neutral-300 rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-black transition"
+              className="w-full border border-neutral-300 rounded-xl px-4 py-2 focus:ring-2 focus:ring-black focus:outline-none text-left"
               placeholder="John Doe"
               required
             />
           </div>
 
           <div>
-            <label className="block mb-1 text-xs font-semibold text-neutral-700 tracking-wide">
+            <label className="block mb-1 font-medium tracking-wide">
               Email
             </label>
             <input
@@ -67,14 +70,14 @@ export default function ContactPage() {
               name="email"
               value={form.email}
               onChange={handleChange}
-              className="w-full px-4 py-3 border border-neutral-300 rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-black transition"
+              className="w-full border border-neutral-300 rounded-xl px-4 py-2 focus:ring-2 focus:ring-black focus:outline-none text-left"
               placeholder="you@example.com"
               required
             />
           </div>
 
           <div>
-            <label className="block mb-1 text-xs font-semibold text-neutral-700 tracking-wide">
+            <label className="block mb-1 font-medium tracking-wide">
               Message
             </label>
             <textarea
@@ -82,7 +85,7 @@ export default function ContactPage() {
               rows="5"
               value={form.message}
               onChange={handleChange}
-              className="w-full px-4 py-3 border border-neutral-300 rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-black transition"
+              className="w-full border border-neutral-300 rounded-xl px-4 py-2 focus:ring-2 focus:ring-black focus:outline-none text-left"
               placeholder="Write your message..."
               required
             ></textarea>

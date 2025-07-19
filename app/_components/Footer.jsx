@@ -1,13 +1,13 @@
 import React from "react";
 import { FaGithub, FaInstagram, FaLinkedin } from "react-icons/fa";
-
+import Link from "next/link";
 const Footer = ({ isDark = false }) => {
   return (
     <footer
       className={`${isDark ? "bg-neutral-100" : "bg-white"} py-10`}
       aria-label="Footer"
     >
-      <section className="mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-7 gap-8 py-8 px-6 md:px-10 max-w-[1440px]">
+      <section className="mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 py-8 px-6 md:px-10 max-w-[1440px]">
         {/* Logo and About */}
         <div className="col-span-1 lg:col-span-2 flex flex-col gap-4">
           <div className="flex items-center gap-4">
@@ -131,25 +131,28 @@ const Footer = ({ isDark = false }) => {
             <h2 className="text-neutral-900 font-bold mb-2">SHOP</h2>
             <ul className="space-y-1">
               <li>
-                <a
+                <Link
                   href="/account"
                   className="text-neutral-600 hover:text-black"
                 >
                   My Account
-                </a>
+                </Link>
+              </li>{" "}
+              <li>
+                <Link
+                  href="/Cart"
+                  className="text-neutral-600 hover:text-black"
+                >
+                  Cart
+                </Link>
               </li>
               <li>
-                <a
-                  href="/checkout"
+                <Link
+                  href="/Checkout"
                   className="text-neutral-600 hover:text-black"
                 >
                   Checkout
-                </a>
-              </li>
-              <li>
-                <a href="/cart" className="text-neutral-600 hover:text-black">
-                  Cart
-                </a>
+                </Link>
               </li>
             </ul>
           </nav>
