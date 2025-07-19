@@ -23,6 +23,12 @@ function ProductsView({ AppliedFilters = [], setAppliedFilters, category }) {
   const { products } = useProducts();
   const [filteredProducts, setFilteredProducts] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
+  const arraysAreEqual = (arr1, arr2) => {
+    if (arr1.length !== arr2.length) return false;
+    return arr1.every(
+      (item, index) => JSON.stringify(item) === JSON.stringify(arr2[index])
+    );
+  };
 
   useEffect(() => {
     if (!products?.length) return;
@@ -61,8 +67,10 @@ function ProductsView({ AppliedFilters = [], setAppliedFilters, category }) {
       });
     }
 
-    setFilteredProducts(filtered);
-    setCurrentPage(1);
+    if (!arraysAreEqual(filtered, filteredProducts)) {
+      setFilteredProducts(filtered);
+      setCurrentPage(1);
+    }
   }, [AppliedFilters, products, category]);
 
   const totalPages = Math.ceil(filteredProducts.length / ITEMS_PER_PAGE);
@@ -90,10 +98,6 @@ function ProductsView({ AppliedFilters = [], setAppliedFilters, category }) {
   return (
     <div className="w-full px-4 md:px-6 flex flex-col min-h-full max-h-full">
       <div className="flex flex-col gap-3 mb-3">
-        <h1 className="text-xl md:text-2xl font-bold text-neutral-900">
-          {category ? decodeURIComponent(category) : "Applied Filters:"}
-        </h1>
-
         {!category && (
           <div className="flex flex-wrap gap-5">
             {Object.entries(AppliedFilters)
@@ -156,10 +160,7 @@ function ProductsView({ AppliedFilters = [], setAppliedFilters, category }) {
                   (page >= currentPage - 1 && page <= currentPage + 1);
 
                 if (!isNear) {
-                  if (
-                    page === currentPage - 2 ||
-                    page === currentPage + 2
-                  ) {
+                  if (page === currentPage - 2 || page === currentPage + 2) {
                     return (
                       <span
                         key={`dots-${page}`}

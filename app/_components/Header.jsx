@@ -5,11 +5,18 @@ import Head from "next/head";
 import CartDropdown from "@/app/Cart/_component/CartDrawer";
 import { ShoppingCart, UserCircle, Search, X, LogInIcon } from "lucide-react";
 import { useProducts } from "@/app/_context/ProductsContext";
+import { usePathname } from "next/navigation";
+import { useEffect } from "react";
+
 function Header() {
+  const pathname = usePathname();
   const [menuOpen, setMenuOpen] = useState(false);
   const [showDropdown, setShowDropdown] = useState(false);
   const [showCategories, setShowCategories] = useState(false);
   const { categories } = useProducts();
+  useEffect(() => {
+    setShowCategories(false); 
+  }, [pathname]);
   return (
     <>
       {/* SEO Meta Tags */}
