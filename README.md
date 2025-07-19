@@ -1,6 +1,6 @@
 # 🛒 Full E-Commerce Web Application
 
-A **feature-rich, modern e-commerce web application** built with **Next.js 14**, **Tailwind CSS**, and **React.js**. This project demonstrates a complete and scalable user journey — from product discovery to checkout — including user authentication, cart management, wishlist, and account dashboard.
+A **feature-rich, modern e-commerce web application** built with **Next.js 15**, **Tailwind CSS**, and **React.js**. This project demonstrates a complete and scalable user journey — from product discovery to checkout — including user authentication, cart management, wishlist, and account dashboard.
 
 ---
 
