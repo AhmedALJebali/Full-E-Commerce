@@ -1,11 +1,10 @@
 "use client";
 import { useSearchParams } from "next/navigation";
-import { useState } from "react";
 import Filtering from "./Filtering";
 import ProductsView from "./ProductsView";
 import { X, SlidersHorizontal } from "lucide-react";
 import { useRouter } from "next/navigation";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 export default function SearchClient() {
   const [AppliedFilters, setAppliedFilters] = useState({
     categories: [],
@@ -43,7 +42,7 @@ export default function SearchClient() {
       params.set("price", AppliedFilters.price.join(","));
     }
 
-    router.push(`/Search?${params.toString()}`);
+    router.push(`/Search?${params.toString()}`, { scroll: false });
   }, [AppliedFilters]);
 
   const [showMobileFilters, setShowMobileFilters] = useState(false);

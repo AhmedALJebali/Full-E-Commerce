@@ -1,27 +1,30 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { useProducts } from "@/app/_context/ProductsContext";
 import { Range, getTrackBackground } from "react-range";
+
+const STEP = 10;
+const MIN = 0;
+const MAX = 10000;
+const DEFAULT_PRICE_RANGE = [100, 890];
 
 function Filtering({ AppliedFilters, setAppliedFilters }) {
   const { categories, colors, sizes } = useProducts();
 
-  const STEP = 10;
-  const MIN = 0;
-  const MAX = 10000;
-  // تقسيم المقاسات لأرقام وحروف
   const numberSizes = sizes.filter((s) => !isNaN(Number(s)));
   const letterSizes = sizes.filter((s) => isNaN(Number(s)));
-  // دالة عامة للتبديل بين تفعيل/إلغاء فلتر
+  const priceRange = AppliedFilters.price || DEFAULT_PRICE_RANGE;
+
   const handleToggleFilter = (key, value) => {
     const currentValues = AppliedFilters[key] || [];
-    const newValues = currentValues.includes(value)
+    const updatedValues = currentValues.includes(value)
       ? currentValues.filter((v) => v !== value)
       : [...currentValues, value];
 
-    setAppliedFilters({ ...AppliedFilters, [key]: newValues });
+    setAppliedFilters((prev) => ({ ...prev, [key]: updatedValues }));
   };
+
   const handlePriceChange = (vals) => {
-    setAppliedFilters({ ...AppliedFilters, price: vals });
+    setAppliedFilters((prev) => ({ ...prev, price: vals }));
   };
 
   return (
@@ -32,9 +35,9 @@ function Filtering({ AppliedFilters, setAppliedFilters }) {
           Categories
         </h3>
         <div className="space-y-2">
-          {categories.map((category, index) => (
+          {categories.map((category) => (
             <label
-              key={index}
+              key={category}
               className="flex items-center gap-2 text-sm cursor-pointer"
             >
               <input
@@ -52,10 +55,10 @@ function Filtering({ AppliedFilters, setAppliedFilters }) {
       {/* Colors */}
       <div>
         <h3 className="text-sm font-semibold text-neutral-900 mb-3">Colors</h3>
-        <div className="grid grid-cols-5 md:grid-cols-4 gap-3 max-h-[100px] pt-4 overflow-y-auto px-1 ">
-          {colors.map((color, index) => (
+        <div className="grid grid-cols-5 md:grid-cols-4 gap-3 max-h-[100px] pt-4 overflow-y-auto px-1">
+          {colors.map((color) => (
             <div
-              key={index}
+              key={color}
               style={{ backgroundColor: color }}
               className={`w-6 h-6 rounded-full ring-2 cursor-pointer ${
                 AppliedFilters.colors.includes(color)
@@ -76,12 +79,12 @@ function Filtering({ AppliedFilters, setAppliedFilters }) {
           <div className="mb-3">
             <p className="text-xs font-medium text-neutral-500 mb-1">Letters</p>
             <div className="flex flex-wrap gap-2 max-h-[120px] overflow-y-auto pr-1">
-              {letterSizes.map((size, index) => (
+              {letterSizes.map((size) => (
                 <button
-                  key={index}
+                  key={size}
                   className={`px-3 py-1 rounded border text-sm cursor-pointer ${
-                    AppliedFilters?.sizes?.includes(size)
-                      ? "border-neutral-900 "
+                    AppliedFilters.sizes.includes(size)
+                      ? "border-neutral-900"
                       : "border-neutral-300"
                   }`}
                   onClick={() => handleToggleFilter("sizes", size)}
@@ -97,12 +100,12 @@ function Filtering({ AppliedFilters, setAppliedFilters }) {
           <div>
             <p className="text-xs font-medium text-neutral-500 mb-1">Numbers</p>
             <div className="flex flex-wrap gap-2 max-h-[120px] overflow-y-auto pr-1">
-              {numberSizes.map((size, index) => (
+              {numberSizes.map((size) => (
                 <button
-                  key={index}
+                  key={size}
                   className={`px-3 py-1 rounded border text-sm cursor-pointer ${
                     AppliedFilters.sizes.includes(size)
-                      ? "border-neutral-900 "
+                      ? "border-neutral-900"
                       : "border-neutral-300"
                   }`}
                   onClick={() => handleToggleFilter("sizes", size)}
@@ -117,20 +120,20 @@ function Filtering({ AppliedFilters, setAppliedFilters }) {
 
       {/* Price Range */}
       <div>
-        <h3 className="text-sm font-semibold text-neutral-900 mb-4">Price</h3>
+        <h3 className="text-sm font-semibold text-neutral-900 mb-3">Price</h3>
         <Range
           step={STEP}
           min={MIN}
           max={MAX}
-          values={AppliedFilters.price || [100, 890]}
+          values={priceRange}
           onChange={handlePriceChange}
           renderTrack={({ props, children }) => (
             <div
               {...props}
-              className=" mx-auto h-2 w-[80%] md:w-full rounded-full"
+              className="mx-auto h-2 w-[80%] md:w-full rounded-full"
               style={{
                 background: getTrackBackground({
-                  values: AppliedFilters.price || [100, 890],
+                  values: priceRange,
                   colors: ["#d4d4d8", "#171717", "#d4d4d8"],
                   min: MIN,
                   max: MAX,
@@ -149,7 +152,7 @@ function Filtering({ AppliedFilters, setAppliedFilters }) {
                 className="relative w-4 h-4 bg-neutral-900 rounded-full border border-black"
               >
                 <div className="absolute top-5 left-1/2 -translate-x-1/2 text-xs bg-neutral-900 text-white px-2 py-1 rounded">
-                  ${AppliedFilters.price[index].toFixed(2)}
+                  ${priceRange[index].toFixed(2)}
                 </div>
               </div>
             );

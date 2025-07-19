@@ -5,7 +5,7 @@ function FashionParadise() {
   return (
     <div className="mt-20 bg-[linear-gradient(to_right,_#f6f6f6_30%,_#ffffff_70%)]">
       <div className="mx-auto w-[95%] md:w-[80%] flex flex-row items-center justify-between py-10 gap-6 sm:gap-10">
-        {/* النصوص */}
+      
         <div className="flex flex-col items-start text-left w-1/2">
           <h1 className="text-xl sm:text-2xl md:text-4xl lg:text-5xl font-bold text-neutral-900 leading-tight">
             Fresh Arrivals Online
@@ -39,7 +39,7 @@ function FashionParadise() {
           </Link>
         </div>
 
-        {/* الصورة */}
+    
         <div className="relative w-40 h-40 sm:w-52 sm:h-52 md:w-72 md:h-72 lg:w-80 lg:h-80">
           <Image
             src="/Category Image.svg"

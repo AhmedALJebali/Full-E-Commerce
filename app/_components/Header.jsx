@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import Link from "next/link";
 import Head from "next/head";
 import CartDropdown from "@/app/Cart/_component/CartDrawer";
-import { ShoppingCart, UserCircle, Search, X } from "lucide-react";
+import { ShoppingCart, UserCircle, Search, X, LogInIcon } from "lucide-react";
 import { useProducts } from "@/app/_context/ProductsContext";
 function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -153,6 +153,9 @@ function Header() {
             <Link href="/account" aria-label="User Account">
               <UserCircle size={30} className="text-neutral-600 text-bold" />
             </Link>
+            <Link href={"/login"} aria-label="Login">
+              <LogInIcon size={30} className="text-neutral-600 text-bold" />
+            </Link>
           </div>
         </div>
       </header>
@@ -173,7 +176,10 @@ function Header() {
       >
         <div className="flex justify-between items-center px-4 py-3 border-b">
           <h2 className="text-xl font-semibold">Categories</h2>
-          <button className="cursor-pointer" onClick={() => setShowCategories(false)}>
+          <button
+            className="cursor-pointer"
+            onClick={() => setShowCategories(false)}
+          >
             <X size={24} />
           </button>
         </div>
