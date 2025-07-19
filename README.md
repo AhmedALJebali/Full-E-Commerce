@@ -1,36 +1,154 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# 🛒 Full E-Commerce Web Application
 
-## Getting Started
+A **feature-rich, modern e-commerce web application** built with **Next.js 14**, **Tailwind CSS**, and **React.js**. This project demonstrates a complete and scalable user journey — from product discovery to checkout — including user authentication, cart management, wishlist, and account dashboard.
 
-First, run the development server:
+---
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+### 🌐 Live Preview
+
+Check out the live demo here:  
+🔗 [https://full-e-commerce-w.netlify.app/](https://full-e-commerce-w.netlify.app/)
+
+---
+
+## ✨ Features at a Glance
+
+### 🏠 Homepage
+- Highlights **featured**, **new arrivals**, and **best-selling** products.
+
+### 🔍 Search & Discovery
+- Advanced **search page** with real-time filtering.
+- Filter by **category**, **color**, **size**, and **price**.
+- **Dynamic category**-based product listings.
+
+### 📄 Product Details
+- Interactive **image gallery** using Swiper.js.
+- Selectable **color** and **size** options.
+- Detailed **description**, **features**, and **customer reviews**.
+
+### 🛒 Shopping Cart
+- Add/update/remove items.
+- Quick-view **cart drawer**.
+- **Full cart page** with order summary.
+
+### ❤️ Wishlist
+- Add or remove items from personal wishlist.
+- Accessible via user account.
+
+### 🔐 Authentication & Account
+- User-friendly **login/signup** pages.
+- **Account dashboard** with:
+  - Profile management
+  - Address book (Add/Edit/Delete)
+  - Order history
+  - Wishlist management
+  - Change password
+
+### 💳 Checkout Flow
+- Seamless **multi-step form** to capture shipping and payment info.
+
+### 📱 Responsive UI
+- **Fully responsive** and optimized for mobile, tablet, and desktop.
+
+### 🌐 Static Pages
+- Includes **Contact Us** and other essential static pages.
+
+---
+
+## 🛠️ Tech Stack
+
+| Tool | Description |
+|------|-------------|
+| **Next.js 15** | App Router architecture |
+| **React.js** | UI logic and dynamic behavior |
+| **Tailwind CSS** | Utility-first styling |
+| **React Context API** | Global state management |
+| **Framer Motion** | Smooth UI animations |
+| **Swiper.js** | Image sliders and galleries |
+| **Lucide & React Icons** | Iconography |
+
+---
+
+## 📁 Project Structure
+
+Organized for scalability and maintainability using the App Router structure:
+
+```
+/app
+├── (auth)/              # Login & Signup pages
+├── Cart/                # Cart pages and components
+├── Categories/          # Dynamic category pages
+├── Checkout/            # Checkout flow
+├── Contact/             # Contact Us page
+├── Product/             # Dynamic product detail pages
+├── Search/              # Search & filtering UI
+├── account/             # User dashboard
+├── _components/         # Reusable components (e.g., Header, Footer, Cards)
+├── _context/            # Global contexts (Cart, User, Products, Wishlist)
+│   ├── CartContext.js
+│   ├── ProductsContext.js
+│   ├── UserContext.js
+│   └── WishlistContext.js
+├── layout.js            # Root layout
+└── page.js              # Home page
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+## 🚀 Getting Started
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### ⚙️ Prerequisites
 
-## Learn More
+- **Node.js v18+**
+- **npm** or **Yarn** package manager
 
-To learn more about Next.js, take a look at the following resources:
+### 🧪 Local Setup
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+1. **Clone the repo**:
+   ```bash
+   git clone https://github.com/your-username/your-repository-name.git
+   ```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+2. **Navigate to the project directory**:
+   ```bash
+   cd your-repository-name
+   ```
 
-## Deploy on Vercel
+3. **Install dependencies**:
+   ```bash
+   npm install
+   # or
+   yarn install
+   ```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+4. **Run the development server**:
+   ```bash
+   npm run dev
+   # or
+   yarn dev
+   ```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+5. **Visit the app** at:
+   ```
+   http://localhost:3000
+   ```
+
+---
+
+## 🙌 Contributions
+
+Pull requests are welcome. For major changes, please open an issue first to discuss what you’d like to change.
+
+---
+
+## 📄 License
+
+This project is open-source under the [MIT License](LICENSE).
+
+---
+
+## 📬 Contact
+
+Feel free to reach out for any questions, ideas, or collaboration opportunities.
+
+---
